@@ -80,6 +80,7 @@ router.post(
   upload.single("productImg"),
   async (req, res) => {
     try {
+      console.log("reached");
       const user = await Product.findOneAndUpdate(
         { user: req.user.id },
         {

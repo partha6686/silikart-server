@@ -122,11 +122,11 @@ router.get("/info", fetchuser, async (req, res) => {
   }
 });
 
-//* Get a User Info using POST: '/api/auth/user-info'
-router.get("/info", fetchuser, async (req, res) => {
+//* Get a User Info using POST: '/api/auth/info/:id'
+router.get("/info/:id", fetchuser, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select("-password");
-    res.send(user);
+    const user = await User.findById(req.params.id).select("-password");
+    res.json(user);
   } catch (error) {
     //* Send Internal Server Error
     console.error(error.message);
